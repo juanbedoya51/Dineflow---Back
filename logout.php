@@ -2,21 +2,6 @@
 // Iniciar la sesión si no está iniciada
 session_start();
 
-
-// Habilitar CORS solo para tu aplicación Blazor WebAssembly
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Respuesta preflight para solicitudes CORS
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization");
-    header("Access-Control-Max-Age: 3600");
-    exit; // No proceses la solicitud en este caso
-}
-
-// Permitir solicitudes desde tu aplicación Blazor WebAssembly
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
 // Verificar si hay una sesión iniciada
 if (!isset($_SESSION['nombre'])) {
     // Si no hay sesión iniciada, enviar un mensaje de error
@@ -62,5 +47,3 @@ header('Content-Type: application/json');
 echo json_encode($response);
 exit();
 ?>
-
-
